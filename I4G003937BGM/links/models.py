@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from .managers import ActiveLinkManager
+
 User = get_user_model()
 
 
@@ -14,7 +16,7 @@ class Link(models.Model):
     created_date = models.DateTimeField()
     active = models.BooleanField(default=True)
     objects = models.Manager()
-    public = models.ActiveLinkManager()
+    public = ActiveLinkManager()
 
     def __str__(self):
         return self.target_url
